@@ -44,6 +44,10 @@ So, let's now generate the Movie resource with all of the columns it needs:
 
 The `director_id` column is intended to hold the `id` of a row from over in the directors table. Such columns are called **foreign key columns**.
 
+Execute the newly generated instructions to add the movies table:
+
+    rake db:migrate
+
 Quickly add a few rows to the movies table:
 
     rake db:seed:movies
@@ -103,7 +107,9 @@ Let's now add Actors to our application. Our end goal is to show a cast on each 
 
     rails generate starter:resource actor name:string dob:string bio:text image_url:string
 
-`rake db:migrate` and navigate to [http://localhost:3000/actors](http://localhost:3000/actors) and verify that the CRUD resource boilerplate was generated properly. Then, quickly add a few rows:
+`rake db:migrate` and navigate to [http://localhost:3000/actors](http://localhost:3000/actors) and verify that the CRUD resource boilerplate was generated properly.
+    
+Then, quickly add a few rows:
 
     rake db:seed:actors
 
