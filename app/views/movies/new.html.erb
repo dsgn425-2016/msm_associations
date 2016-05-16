@@ -69,7 +69,10 @@
           Director
         </label>
 
-        <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>">
+        <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form-control") %>
+
+        <!-- select_tag fields: name of column trying to populate in the table, array you want to draw options from, thing to store in the first column, what user should see, pre-selected value-->
+
       </div>
 
       <button class="btn btn-success">
