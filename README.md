@@ -8,18 +8,26 @@ There is a Getting Started video on Canvas.
 
 ## Setup
 
-1. Clone and open the code.
-1. Add the [starter_generators](https://gist.github.com/raghubetina/80d3cf2cf82666ed1c0f) gem.
-1. `bundle install`
-1. Generate the Director resource:
+ 1. Clone and open the code.
+ 1. Add the [starter_generators](https://gist.github.com/raghubetina/80d3cf2cf82666ed1c0f) gem.
+ 1. `bundle install`
+ 1. Generate the Director resource:
 
         rails generate starter:resource director name:string dob:string bio:text image_url:string
 
-1. `rake db:migrate`
-1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
-1. Quickly add a few rows to the directors table:
+ 1. `rake db:migrate`
+ 1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
+ 1. Quickly add a few rows to the directors table:
 
         rake db:seed:directors
+        
+## Two important notes about `rails console`
+
+ 1. Sometimes when the output of a command is very long, `rails console` is going to paginate it for you. You will have a `:` prompt when this is true, and you can hit <kbd>Return</kbd> to scroll through line by line, or <kbd>Space</kbd> to scroll through page by page.
+    
+    To get back to the regular prompt so that you can enter your next command, just hit <kbd>q</kbd>.
+
+ 2. If you are in `rails console` and then make a change to a model (for example, you add a validation or fix a syntax error), then, annoyingly, you have to `exit` and then launch `rails console` again to pick up the new logic.
 
 ## Associating Directors and Movies
 
