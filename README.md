@@ -31,7 +31,7 @@ There is a Getting Started video on Canvas.
 
 ## Solution
 
-Once you've struggled for a while, it's okay to peek at [one possible solution](https://github.com/appdevspring16/msm_associations_solutions/commits/master).
+Once you've struggled for a while with a given task, it's okay to peek at [one possible solution](https://github.com/dsgn425-2016/msm_associations_solutions/commits/master).
 
 ## Associating Directors and Movies
 
