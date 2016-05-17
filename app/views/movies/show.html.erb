@@ -27,8 +27,13 @@
 
 
       <dt>Director</dt>
-      <dd><%= Director.find_by(:id => movie.director_id).name %></dd>
+      <dd>@movie.director.name %></dd>
 
+
+      <dt>List of Characters</dt>
+      <% @movie.characters.each do |character| %>
+      <dd> <%= character.name %> </dd>
+      <% end %>
 
     </dl>
 
