@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  # Default
+  get "/", :controller => "actors", :action => "index"
+
   # Routes for the Character resource:
   # CREATE
+
   get "/characters/new", :controller => "characters", :action => "new"
   post "/create_character", :controller => "characters", :action => "create"
 
