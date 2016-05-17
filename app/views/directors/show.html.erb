@@ -15,11 +15,62 @@
       <dd><%= truncate(@director.bio) %></dd>
 
       <dt>Image url</dt>
-      <dd><%= @director.image_url %></dd>
+      <dd><img src = "<%= @director.image_url %>"></dd>
 
-      <dt>Number of films directed</dt>
+      <dt>Number of movies</dt>
       <dd><%= Movie.where(:director_id => @director.id).count %></dd>
 
+      <dt>Filmography</dt>
+      <dd>
+        <ul class = "list-group">
+          <% @movies.each do |movie| %>
+          <li class = "list-group-item">
+            <a href="/movies/<%= movie.id %>">
+              <%= movie.title %>
+              (<%= movie.year %>)
+            </a>
+          </li>
+
+
+          <% end %>
+
+          <li class = "list-group-item">
+            <form action="/create_movie" method="post">
+
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <div class="form-group">
+
+                <input name="director_id" type="hidden" value="<%= @director.id %>">
+
+              </div>
+              <!-- Label and input for movie -->
+              <div class="form-group">
+                <label for="title" class="control-label">
+                  Title
+                </label>
+                <input type="text" name="title" placeholder="Title">
+              </div>
+
+              <!-- Label and input for year -->
+              <div class="form-group">
+                <label for="year" class="control-label">
+                  Year
+                </label>
+                <input type="text" name="year" placeholder="Year">
+              </div>
+
+              <button class="btn btn-success">
+                Create Movie
+              </button>
+              or
+              <a href="/directors">Cancel</a>
+
+            </form>
+          </li>
+        </ul>
+
+      </dd>
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -36,7 +87,7 @@
   </div>
 </div>
 
-<ul>
+<!-- <ul>
 
   <% Movie.where(:director_id => @director.id).each do |movie| %>
   <li>
@@ -51,10 +102,10 @@
 <div class="row">
   <div class="col-md-12">
     <form action="/create_movie" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
+      Hidden input for authenticity token to protect from forgery
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for title -->
+      Label and input for title
       <div class="form-group">
         <label for="title" class="control-label">
           Title
@@ -63,7 +114,7 @@
         <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @movie.title %>">
       </div>
 
-      <!-- Label and input for year -->
+      Label and input for year
       <div class="form-group">
         <label for="year" class="control-label">
           Year
@@ -72,7 +123,7 @@
         <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @movie.year %>">
       </div>
 
-      <!-- Label and input for duration -->
+      Label and input for duration
       <div class="form-group">
         <label for="duration" class="control-label">
           Duration
@@ -81,7 +132,7 @@
         <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="<%= @movie.duration %>">
       </div>
 
-      <!-- Label and input for description -->
+      Label and input for description
       <div class="form-group">
         <label for="description" class="control-label">
           Description
@@ -90,7 +141,7 @@
         <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @movie.description %></textarea>
       </div>
 
-      <!-- Label and input for image_url -->
+      Label and input for image_url
       <div class="form-group">
         <label for="image_url" class="control-label">
           Image url
@@ -111,5 +162,3 @@
     </form>
   </div>
 </div>
-
-loop<%=  %>
