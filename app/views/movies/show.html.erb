@@ -46,11 +46,11 @@
 <dd>
 <ul>
   <% Character.where(:movie_id => @movie.id).each do |character| %>
-  <li><a href="/characters/<%= character.id %>"><%= character.name  %></a></li>
+  <li><a href="/actors/<%= character.actor_id %>"><%= Actor.find_by(:id => character.actor_id).name  %></a></li>
   <% end %>
+
 </ul>
 </dd>
-
 <h3>Add a new character</h3>
 
 <div class="row">

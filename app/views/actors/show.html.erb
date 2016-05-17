@@ -38,15 +38,14 @@
   </div>
 </div>
 
-<dt>Names of characters</dt>
+<dt>Names of movies</dt>
 <dd>
   <ul>
     <% Character.where(:actor_id => @actor.id).each do |character| %>
-    <li><a href="/characters/<%= character.id %>"><%= character.name  %></a></li>
+    <li><a href="/movies/<%= character.movie_id %>"><%= Movie.find_by(:id => character.movie_id).title %></a></li>
     <% end %>
   </ul>
 </dd>
-
 <h3>Add a new character</h3>
 <div class="row">
   <div class="col-md-12">
