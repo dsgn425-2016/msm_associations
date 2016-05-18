@@ -44,7 +44,8 @@
 
 <ul>
   <% Character.where(:movie_id => @movie.id).each do |character| %>
-  <li> <a href="/characters/<%= character.id %>"> <%= character.name %></a> </li>
+  <li> <%= character.actor.name %>
+        (<%= character.name %>)</li>
   <% end %>
 </ul>
 
