@@ -23,7 +23,7 @@
       <dt>Director</dt>
       <dd>
         <a href = "/directors/<%= @movie.director_id %>">
-          <%= Director.find_by(:id => @movie.director_id).name %>
+          <%= @movie.director.name %>
         </a>
       </dd>
 
@@ -31,10 +31,10 @@
 
       <dd>
         <ul class = "list-group">
-          <% @characters.each do |character| %>
+          <% @movie.characters.each do |character| %>
           <li class = "list-group-item">
             <a href="/actors/<%= character.actor_id %>">
-              <%= Actor.find_by(:id => character.actor_id).name %>
+              <%= character.actor.name %>
             </a>
             (<%= character.name %>)
           </li>
