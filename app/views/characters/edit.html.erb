@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @character.errors.any? %>
-  <% @character.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @character.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -24,32 +24,36 @@
           Movie
         </label>
 
-        <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @character.movie_id %>">
-      </div>
+      <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
 
-      <!-- Label and input for actor_id -->
-      <div class="form-group">
-        <label for="actor_id" class="control-label">
-          Actor
-        </label>
+      <a href="/movies/new"<button class="button">OR Add a New Movie</button></a>
+    </div>
 
-        <input type="text" id="actor_id" name="actor_id" placeholder="Actor" class="form-control" value="<%= @character.actor_id %>">
-      </div>
+    <!-- Label and input for actor_id -->
+    <div class="form-group">
+      <label for="actor_id" class="control-label">
+        Actor
+      </label>
 
-      <!-- Label and input for name -->
-      <div class="form-group">
-        <label for="name" class="control-label">
-          Name
-        </label>
+    <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @character.movie_id), :class => "form-control") %>
+  <a href="/actor/new"<button class="button">OR Add a New Actor</button></a>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
-      </div>
+    </div>
 
-      <button class="btn btn-warning">
-        Update Character
-      </button>
-      or
-      <a href="/characters/<%= @character.id %>">Cancel</a>
-    </form>
-  </div>
+    <!-- Label and input for name -->
+    <div class="form-group">
+      <label for="name" class="control-label">
+        Name
+      </label>
+
+      <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @character.name %>">
+    </div>
+
+    <button class="btn btn-warning">
+      Update Character
+    </button>
+    or
+    <a href="/characters/<%= @character.id %>">Cancel</a>
+  </form>
+</div>
 </div>
