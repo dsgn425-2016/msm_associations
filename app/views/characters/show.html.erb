@@ -10,10 +10,10 @@
       <dd><%= @character.name %></dd>
 
       <dt>Movie</dt>
-      <dd><%= Movie.find_by(:id => @character.movie_id).title %></dd>
+      <dd><%= @character.movie.title %></dd>
 
       <dt>Actor</dt>
-      <dd><%= Actor.find_by(:id => @character.actor_id).try(:name) %></dd>
+      <dd><%= @character.actor.try(:name) %></dd>
 
 
 

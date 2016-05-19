@@ -5,4 +5,6 @@ validates :name, :presence => true, :uniqueness => {:scope => :dob }
   #  - bio: no rules
   #  - image_url: no rules
 
+  has_many :movies
+
 end
