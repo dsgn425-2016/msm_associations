@@ -16,10 +16,10 @@ class Movie < ActiveRecord::Base
 
   #  - image_url: no rules
 
-  #### belongs_to(:director, :class_name => "Director", :foreign_key => "director_id")
+   belongs_to(:director, :class_name => "Director", :foreign_key => "director_id")
 
   # belongs_to(:WHEN I CALL THIS METHOD, :Cclass_name => "GO TO THIS TABLE", :foreign_key => "USE THIS FOREIGN KEY")
 
-  #### has_many(:characters, :class_name => "Character", :foreign_key => "movie_id")
+   has_many(:characters, :class_name => "Character", :foreign_key => "movie_id")
 
 end

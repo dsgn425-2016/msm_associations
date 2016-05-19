@@ -18,25 +18,32 @@
       <dd><%= @movie.description %></dd>
 
       <dt>Image url</dt>
-      <dd><%= @movie.image_url %></dd>
+      <dd>
+        <img src="<%= @movie.image_url %>"/>
+        </dd>
 
       <dt>Director</dt>
       <dd>
         <a href="/directors/<%=@movie.director_id %>">
-          <%= Director.find_by(:id => @movie.director_id).name %>
+          <!-- <%= Director.find_by(:id => @movie.director_id).name %> -->
+          <%= @movie.director.name %>
         </a>
       </dd>
 
         <dt>Number of Characters</dt>
         <dd>
-          <%= Character.where(:movie_id => @movie.id).count%>
+          <%= @movie.characters.count %>
         </dd>
 
-        <dt>Characters</dt>
+        <dt>Cast</dt>
         <dd>
           <ul class="list-unstyled">
-            <% Character.where(:movie_id => @movie.id).each do |char| %>
-            <li><%= char.name %></li>
+            <% @movie.characters.each do |character| %>
+            <li>
+              <a href="/actors/<%= character.actor.id %>"><%= character.actor.name %></a>
+
+              (<%= character.name %>)
+            </li>
             <% end %>
           </ul>
         </dd>
