@@ -18,7 +18,7 @@
       <dd><%= @actor.bio %></dd>
 
       <dt>Number of characters</dt>
-      <dd><%= Character.where(:actor_id => @actor.id).count %></dd>
+      <dd><%= @actor.characters.count %></dd>
 
 
 
@@ -41,8 +41,8 @@
 <dt>Names of movies</dt>
 <dd>
   <ul>
-    <% Character.where(:actor_id => @actor.id).each do |character| %>
-    <li><a href="/movies/<%= character.movie_id %>"><%= Movie.find_by(:id => character.movie_id).title %></a></li>
+    <% @actor.characters.each do |character| %>
+    <li><a href="/movies/<%= character.movie_id %>"><%= character.movie.title %></li>
     <% end %>
   </ul>
 </dd>

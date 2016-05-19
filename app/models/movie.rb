@@ -12,6 +12,6 @@ class Movie < ActiveRecord::Base
   validates :duration, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 2764800 }
 
   belongs_to :director
-  has_man :characters
+  has_many :characters
 
 end
