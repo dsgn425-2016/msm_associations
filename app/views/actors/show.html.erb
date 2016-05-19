@@ -25,7 +25,6 @@
           <li class = "list-group-item">
             <a href="/movies/<%= character.movie_id %>">
               <%= character.movie.title %>
-              <%= Movie.find_by(:id => character.movie_id).title %>
             </a>
             (<%= character.name %>)
           </li>
