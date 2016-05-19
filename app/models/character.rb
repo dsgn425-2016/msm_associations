@@ -6,4 +6,6 @@ class Character < ActiveRecord::Base
   # - actor_id: must be present
   validates :actor_id, :presence =>true
 
+  belongs_to :movie
+  belongs_to :actor
 end
