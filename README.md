@@ -8,18 +8,30 @@ There is a Getting Started video on Canvas.
 
 ## Setup
 
-1. Clone and open the code.
-1. Add the [starter_generators](https://gist.github.com/raghubetina/80d3cf2cf82666ed1c0f) gem.
-1. `bundle install`
-1. Generate the Director resource:
+ 1. Clone and open the code.
+ 1. Add the [starter_generators](https://gist.github.com/raghubetina/80d3cf2cf82666ed1c0f) gem.
+ 1. `bundle install`
+ 1. Generate the Director resource:
 
         rails generate starter:resource director name:string dob:string bio:text image_url:string
 
-1. `rake db:migrate`
-1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
-1. Quickly add a few rows to the directors table:
+ 1. `rake db:migrate`
+ 1. Start the server and navigate to [http://localhost:3000/directors](http://localhost:3000/directors); verify that the CRUD resource boilerplate was generated properly.
+ 1. Quickly add a few rows to the directors table:
 
         rake db:seed:directors
+        
+## Two important notes about `rails console`
+
+ 1. Sometimes when the output of a command is very long, `rails console` is going to paginate it for you. You will have a `:` prompt when this is true, and you can hit <kbd>Return</kbd> to scroll through line by line, or <kbd>Space</kbd> to scroll through page by page.
+    
+    **To get back to the regular prompt so that you can enter your next command, just hit <kbd>q</kbd>.**
+
+ 2. If you are in `rails console` and then make a change to a model (for example, you add a validation or fix a syntax error), then, annoyingly, **you have to `exit` and then relaunch `rails console`** to pick up the new logic.
+
+## Solution
+
+Once you've struggled for a while with a given task, it's okay to peek at [one possible solution](https://github.com/dsgn425-2016/msm_associations_solutions/commits/master).
 
 ## Associating Directors and Movies
 
@@ -43,6 +55,10 @@ So, let's now generate the Movie resource with all of the columns it needs:
     rails generate starter:resource movie title:string year:integer duration:integer description:text image_url:string director_id:integer
 
 The `director_id` column is intended to hold the `id` of a row from over in the directors table. Such columns are called **foreign key columns**.
+
+Execute the newly generated instructions to add the movies table:
+
+    rake db:migrate
 
 Quickly add a few rows to the movies table:
 
@@ -103,7 +119,9 @@ Let's now add Actors to our application. Our end goal is to show a cast on each 
 
     rails generate starter:resource actor name:string dob:string bio:text image_url:string
 
-`rake db:migrate` and navigate to [http://localhost:3000/actors](http://localhost:3000/actors) and verify that the CRUD resource boilerplate was generated properly. Then, quickly add a few rows:
+`rake db:migrate` and navigate to [http://localhost:3000/actors](http://localhost:3000/actors) and verify that the CRUD resource boilerplate was generated properly.
+    
+Then, quickly add a few rows:
 
     rake db:seed:actors
 
@@ -318,7 +336,3 @@ end
 ```
 
 You may or may not need these many-to-many helper methods in this project, but it's nice to know you can easily add them.
-
-## Solution
-
-Once you've struggled for a while, it's okay to peek at [one possible solution](https://github.com/appdevspring16/msm_associations_solutions/commits/master).
