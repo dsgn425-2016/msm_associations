@@ -17,4 +17,8 @@ class Movie < ActiveRecord::Base
   #  - image_url: no rules
   #
 
+  belongs_to :director
+  has_many :characters
+  has_many :actors, through: :characters
+
 end
