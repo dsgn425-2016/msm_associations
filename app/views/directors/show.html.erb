@@ -17,31 +17,18 @@
       <dt>Image</dt>
       <dd><img src="<%= @director.image_url %>"></dd>
 
-      <dt>Number of films directed</dt>
+      <dt>Number of movies</dt>
       <dd><%= Movie.where(:director_id => @director.id).count %></dd>
+      <dt>Filmography</dt>
+      <dd>
+        <ul class="list-group">
+        <% Movie.where( :director_id => @director.id).each do |movie| %>
 
-    </dl>
+        <li class="list-group-item"><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/directors" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/directors/<%= @director.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_director/<%= @director.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
-  </div>
-</div>
-
-<ul>
-  <% Movie.where( :director_id => @director.id).each do |movie| %>
-  <li><a href="/movies/<%= movie.id %>"><%= movie.title %></a></li>
-  <% end %>
+        <% end %>
 </ul>
-
+  <ul class="list-group">
 <!--Added from the movies > new.html.erb page -->
 <div>
   <form action="/create_movie" method="post">
@@ -109,4 +96,21 @@
     <a href="/movies">Cancel</a>
   </div>
 </form>
+</div>
+</ul>
+</dd>
+</dl>
+  </div>
+</div>
+
+<div class="btn-group btn-group-justified">
+  <a href="/directors" class="btn btn-primary">
+    Back
+  </a>
+  <a href="/directors/<%= @director.id %>/edit" class="btn btn-warning">
+    Edit
+  </a>
+  <a href="/delete_director/<%= @director.id %>" class="btn btn-danger" rel="nofollow">
+    Delete
+  </a>
 </div>

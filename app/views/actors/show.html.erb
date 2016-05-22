@@ -12,10 +12,24 @@
       <dd><%= @actor.dob %></dd>
 
       <dt>Bio</dt>
-      <dd><%= @actor.bio %></dd>
+      <dd><%= truncate(@actor.bio) %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @actor.image_url %></dd>
+      <dt>Image</dt>
+      <dd><img src="<%= @actor.image_url %>" width="100"></dd>
+
+      <dt>Filmography</dt>
+      <dd>
+        <ul class="list-group">
+          <% Character.where( :actor_id => @actor.id).each do |character| %>
+          <li class="list-group-item">
+            (<%= character.name %>)
+          </li>
+
+          <% end %>
+        </ul>
+      </dd>
+
+
 
     </dl>
 

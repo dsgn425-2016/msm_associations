@@ -17,14 +17,28 @@
       <dt>Description</dt>
       <dd><%= @movie.description %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @movie.image_url %></dd>
+      <dt>Image</dt>
+      <dd><img src="<%= @movie.image_url %>" width="100"></dd>
 
       <dt>Director</dt>
       <dd><a href="/directors/<%= @movie.director_id %>"><%= Director.find_by( :id => @movie.director_id ).name %></a></dd>
 
-      <dt>Number of characters</dt>
-      <dd><%= Character.where(:movie_id => @movie.id ).count %></dd>
+      <!-- <dt>Number of characters</dt>
+      <dd><%= Character.where(:movie_id => @movie.id ).count %></dd> -->
+
+      <dt>Cast</dt>
+      <dd>
+      <ul class="list-group">
+        <% Character.where( :movie_id => @movie.id).each do |character| %>
+        <li class="list-group-item">
+        <a href="/actors/"><%= Actor.find_by(:id => character.actor_id).name %></a>
+        (<%= character.name %>)
+        </li>
+
+        <% end %>
+      </ul>
+
+    </dd>
 
     </dl>
 
