@@ -69,7 +69,18 @@
           Director
         </label>
 
-        <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>">
+      <!--  <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
+<!-- *******************THIS IS A DROPDOWN FOR YOUR USER *****************************down here
+        <select class="form-control" name="director_id">
+          <% Director.all.each do |director|%>
+          <option value="<%=director_id%>"><%=director.name %></option>
+          <% end%>
+ ************************************* -->
+
+<%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form-control")
+
+<option value="option">option</option>
+        </select>
       </div>
 
       <button class="btn btn-success">
