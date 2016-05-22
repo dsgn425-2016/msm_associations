@@ -102,10 +102,7 @@
     <% end %>
   </select> -->
 
-  <label for="director_id" class="control-label">
-    Director
-  </label>
-  <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form-control") %>
+<input type="hidden" name="director_id" value="<%= @director.id %>">
 </div>
 
 <button class="btn btn-success">
