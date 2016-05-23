@@ -49,8 +49,8 @@
 <ul>
   <% @movie.characters.each do |character| %>
     <li>
-      <a href="/actors/<%= character.actor_id %>"><%= character.actor.name %>
-      (<%= character.name %>)</a>
+      <%= character.actor.name %>
+      (<%= character.name %>)
     </li>
   <% end %>
 </ul>
