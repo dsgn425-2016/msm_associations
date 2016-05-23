@@ -7,14 +7,14 @@
       <dt>Image</dt>
       <dd><img src="<%= @director.image_url %>"></dd>
       <dt>Name</dt>
-      <dd><%= Director.find_by(id: @director.id).name %></dd>
+      <dd><%= @director.name %></dd>
       <dt>Dob</dt>
       <dd><%= @director.dob %></dd>
       <dt>Bio</dt>
       <dd><%= truncate(@director.bio) %></dd>
       <dt>Number of Films Directed</dt>
       <dd>
-        <%= Movie.where(director_id: @director.id).count %>
+        <%= @director.movies.count %>
       </dd>
     </dl>
     <div class="btn-group btn-group-justified">
@@ -31,7 +31,7 @@
   </div>
 </div>
 <ul>
-  <% Movie.where(director_id: @director.id).each do |movie| %>
+  <% @director.movies.each do |movie| %>
   <li>
     <a href="/movies/<%= movie.id %>"><%=movie.title%></a>
   </li>

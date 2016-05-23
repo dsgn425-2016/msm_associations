@@ -21,20 +21,30 @@
 
 
       <dt>Director</dt>
-      <dd> <a href="/directors/<%= @movie.director_id %>"><%= Director.find_by(id: @movie.director_id).name %></a>
-      </dd>
-    </dl>
+      <dd> <a href="/directors/<%= @movie.director_id %>">
+        <%= @movie.director.name %>
+      </a>
+      <dt>Number of Characters</dt>
+      <dd><%= @movie.characters.count %></dd>
+    </dd>
+  </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/movies" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/movies/<%= @movie.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_movie/<%= @movie.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
+  <div class="btn-group btn-group-justified">
+    <a href="/movies" class="btn btn-primary">
+      Back
+    </a>
+    <a href="/movies/<%= @movie.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_movie/<%= @movie.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
   </div>
 </div>
+</div>
+<ul>
+  <% @movie.characters.each do |character| %>
+  <li><%= character.name %>
+    (<%= character.actor.name %>)</li>
+    <% end %>
+  </ul>
