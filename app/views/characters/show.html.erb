@@ -7,7 +7,6 @@
     <dl class="dl-horizontal">
       <dt>Movie</dt>
       <dd><%= Movie.find_by(:id => @character.movie_id).title  %></dd>
-
       <dt>Actor</dt>
       <dd><%= Actor.find_by(:id => @character.movie_id).name %></dd>
 
