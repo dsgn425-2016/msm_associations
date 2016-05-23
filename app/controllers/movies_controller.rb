@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @character=Character.where ({:id => @movie.id})
+    @character=Character.where ({:movie_id => @movie.id})
   end
 
   def new

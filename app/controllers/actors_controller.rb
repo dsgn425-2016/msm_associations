@@ -5,7 +5,7 @@ class ActorsController < ApplicationController
 
   def show
     @actor = Actor.find(params[:id])
-    @character=Character.where ({:id => @actor.id})
+    @character=Character.where ({:actor_id => @actor.id})
   end
 
   def new
