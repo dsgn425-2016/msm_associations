@@ -21,11 +21,24 @@
       <dd><a href ="/directors/<%= @movie.director_id %>">
           <%= Director.find_by(:id => @movie.director_id).name %></a>
       </dd>
+
       <dt>Image</dt>
       <dd>
         <img src="<%= @movie.image_url %>" alt="" />
       </dd>
 
+      <dt>Number of Actors</dt>
+      <dd> <%= Character.where(:movie_id => @movie.id).count %> </a>
+      </dd>
+
+      <dt>Actors</dt>
+      <dd>
+        <% @movie.characters.each do |character| %>
+          <li class="list-group-item">
+            <%= character.name %>
+          </li>
+        <% end %>
+      </dd>
     </dl>
 
     <div class="btn-group btn-group-justified">

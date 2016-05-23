@@ -24,10 +24,15 @@
           Movie
         </label>
 
-        <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @character.movie_id %>">
+        <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @character.movie_id), :class => "form-control") %>
+
       </div>
 
-      <!-- Label and input for actor_id -->
+      <p>
+        If you don't see the right movie in the dropdown list, <a href="/movies/new">Add a new movie</a>
+      </p>
+
+      # <!-- Label and input for actor_id -->
       <div class="form-group">
         <label for="actor_id" class="control-label">
           Actor
@@ -36,7 +41,7 @@
         <input type="text" id="actor_id" name="actor_id" placeholder="Actor" class="form-control" value="<%= @character.actor_id %>">
       </div>
 
-      <!-- Label and input for name -->
+      # <!-- Label and input for name -->
       <div class="form-group">
         <label for="name" class="control-label">
           Name

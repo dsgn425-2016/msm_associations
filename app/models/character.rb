@@ -1,6 +1,12 @@
 class Character < ActiveRecord::Base
 
-  # name must be present and unique in combination with dob
-  validates :name, :presence => true, :uniqueness => { :scope => :dob }
+  # movie_id must be present
+  validates :movie_id, :presence => true
+
+  #actor_id must be present
+  validates :actor_id, :presence => true
+
+  belongs_to :movie
+  has_many :movies
 
 end
