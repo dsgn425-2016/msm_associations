@@ -8,7 +8,6 @@
       <dt>Image</dt>
       <dd>
         <img src="<%= @movie.image_url %>" alt="" />
-
       </dd>
       <dt>Title</dt>
       <dd><%= @movie.title %></dd>
@@ -22,11 +21,10 @@
       <dt>Description</dt>
       <dd><%= @movie.description %></dd>
 
-
-
-
       <dt>Director</dt>
-      <dd><%= Director.find_by(:id => @movie.director_id).name %></dd>
+      <dd><a href="/directors/<%= @movie.director_id %>">
+        <%= Director.find_by(:id => @movie.director_id).name %>
+      </dd>
 
     </dl>
 
