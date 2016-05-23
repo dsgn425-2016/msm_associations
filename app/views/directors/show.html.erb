@@ -36,11 +36,11 @@
 
 
 
-    <ul>
-      <% Movie.where(:director_id => @director.id).each do |movie| %>
-      <li><a href="movie/<%= movie.id %>"><%= movie.title %></li>
-        <% end %>
-      </ul>
+      <ul>
+        <% Movie.where(:director_id => @director.id).each do |movie| %>
+        <li><a href="movie/<%= movie.id %>"><%= movie.title %></li>
+          <% end %>
+        </ul>
 
       <form action="/create_movie" method="post">
         <!-- Hidden input for authenticity token to protect from forgery -->
