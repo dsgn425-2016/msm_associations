@@ -5,6 +5,10 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
+
+      <dt>Image</dt>
+      <dd><img src="<%= @movie.image_url %>"></dd>
+
       <dt>Title</dt>
       <dd><%= @movie.title %></dd>
 
@@ -17,11 +21,55 @@
       <dt>Description</dt>
       <dd><%= @movie.description %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @movie.image_url %></dd>
-
       <dt>Director</dt>
-      <dd><a href="/directors/<%= @movie.director_id %>"><%= Director.find_by(:id => @movie.director_id).name %></dd>
+      <dd><a href="/directors/<%= @movie.director_id %>"><%= @movie.director.name %></a></dd>
+
+      <dt>Number of characters</dt>
+      <dd><%= @movie.characters.count %></dd>
+
+      <dt>Cast</dt>
+      <dd>
+        <% @movie.characters.each do |character| %>
+          <li><%= character.actor.name %> (<%= character.name %>)</li>
+        <% end %>
+
+      </dd>
+      <dt>Add a new character</dt>
+      <dd>
+        <form action="/create_character" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for movie_id -->
+          <div class="form-group">
+            <input type="hidden" name="movie_id" value="<%= @movie.id %>">
+          </div>
+
+          <!-- Label and input for actor_id -->
+          <div class="form-group">
+            <label for="actor_id" class="control-label">
+              Actor
+            </label>
+
+            <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, @movie_id), :class => "form-control") %>
+
+          </div>
+          <a href="/actors/new">or add a new actor</a>
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="control-label">
+              Name
+            </label>
+
+            <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+          </div>
+
+          <button class="btn btn-success">
+            Create Character
+          </button>
+        </form>
+      </dd>
 
     </dl>
 
