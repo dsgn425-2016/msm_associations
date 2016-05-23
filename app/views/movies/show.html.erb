@@ -40,7 +40,9 @@
     <% @character.each do |character| %>
     <div>
         <tr>
-          <td><%=Actor.find_by(:id => character.actor_id).name%></td>
+          <a href="/actors/<%=character.actor_id%>">
+          <%=Actor.find_by(:id => character.actor_id).name%>
+        </a>
           <td>(<%=character.name%>)</td>
         </tr>
     </div>
