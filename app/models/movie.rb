@@ -9,4 +9,8 @@ validates :year, numericality: { only_integer: true, :greater_than_or_equal_to =
   validates :duration, numericality: { only_integer: true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 2764800 }
   #- description: no rules
   #- image_url: no rules
+  belongs_to :director
+
+  has_many :characters
+  has_many :actors, :through => :characters
 end
