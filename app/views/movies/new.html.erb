@@ -70,7 +70,6 @@
         </label>
 
         <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form-control") %>
-
       </div>
 
       <button class="btn btn-success">
