@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Route for bare domain:
+  get('/', { :controller => 'movies', :action => 'index' })
+
+  #------------------------------
  # Routes for the Character resource:
   # CREATE
   get "/characters/new", :controller => "characters", :action => "new"
@@ -69,3 +73,4 @@ Rails.application.routes.draw do
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
+end

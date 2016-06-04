@@ -8,7 +8,7 @@ validates :year, :numericality=> {:only_integer => true, :greater_than_or_equal_
 # - duration: must be integer between 0 and 2764800
 validates :duration, :numericality=> {:only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 2764800}
 # - description: no rules
-validates :description, :presence=> true
+# validates :description, :presence=> true
 # - image_url: no rules
 
 end

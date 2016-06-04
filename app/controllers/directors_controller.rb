@@ -5,7 +5,7 @@ class DirectorsController < ApplicationController
 
   def show
     @director = Director.find(params[:id])
-     @movie = Movie.new
+    @movie = Movie.new
   end
 
   def new
@@ -43,13 +43,13 @@ class DirectorsController < ApplicationController
     else
       render 'edit'
     end
-  end
+   end
 
   def destroy
     @director = Director.find(params[:id])
 
     @director.destroy
 
-    redirect_to "/directors", :notice => "Director deleted."
-  end
-end
+     redirect_to "/directors", :notice => "Director deleted."
+   end
+ end
